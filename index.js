@@ -20,15 +20,7 @@ const createTeam = () => {
   
 }
 
-const createManager = () => {
-  //ask questions
-  .then(answers) => const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
-  teamMembers.push(manager);
-  //what's managers name
-  //id
-  //email
-  //office number
-};
+
 
 
 const buildTeam = () => {
@@ -40,13 +32,7 @@ const buildTeam = () => {
   // }
 }
 
-const createIntern = () => {
-    //ask questions
-};
 
-const createEngineer = () => {
-    //ask questions
-};
 
 // const init = () => {
 //   promptUser()
@@ -59,6 +45,86 @@ const createEngineer = () => {
 //   .catch((err) => console.error(err));
 // }
 
+
+
 const appMenu = () => {
   createManager();
+  //ask if manager wants to create something else and if so what
+  //if Engineer, createEngineer();
+  //if Intern, createIntern();
+  //if finished, buildTeam(); 
 };
+
+const createManager = () => {
+  askManagerQuestions()
+  .then((answers) => {
+    const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
+    teamMembers.push(manager);
+    console.log(teamMembers);
+  })
+  .catch((err) => console.error(err));
+};
+
+const managerQuestions = [
+  {
+    type: "input",
+    message: "What is your name?",
+    name: "name"
+  },
+  {
+    type: "input",
+    message: "What is your ID number?",
+    name: "id"
+  },
+  {
+    type: "input",
+    message: "What is your email address?",
+    name: "email"
+  },
+  {
+    type: "input",
+    message: "What is your office number?",
+    name: "office"
+  },
+]
+
+const askManagerQuestions = () => {
+  return inquirer.prompt(managerQuestions);
+}
+
+
+//function to ask to keep going with what kind of employee or to stop.
+
+
+const createEngineer = () => {
+  askEngineerQuestions()
+  .then((answers) => {
+    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+    teamMembers.push(engineer);
+    console.log(teamMembers);
+  })
+  .catch((err) => console.error(err));
+};
+
+const askEngineerQuestions = () => {
+  return inquirer.prompt(engineerQuestions);
+}
+
+const createIntern = () => {
+  askInternQuestions()
+  .then((answers) => {
+    const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+    teamMembers.push(intern);
+    console.log(teamMembers);
+  })
+  .catch((err) => console.error(err));
+};
+
+const askInternQuestions = () => {
+  return inquirer.prompt(internQuestions);
+}
+
+
+
+appMenu();
+
