@@ -1,11 +1,15 @@
 function generateManager(manager){
-  return `${manager.getID()}`
+    return `${manager.getID()}`
 };
 
 
-function generateIntern(intern){}
+function generateIntern(intern){
+    return `${intern.getID()}`
+}
 
-function generateEngineer(engineer){}
+function generateEngineer(engineer){
+    return `${engineer.getID()}`
+}
 
 
 function generateTeam() {
@@ -48,3 +52,10 @@ module.exports = team => {
 </html>
     `;
 };
+
+
+function generateHTML() {
+    console.log("noooooooo")
+};
+
+generateHTML();
