@@ -4,10 +4,10 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateHTML = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML'); //This is running instantly
 const { create } = require('domain'); //LOOK INTO THIS
 const DIST_DIR = path.resolve(__dirname, "dist"); //LOOK INTO THIS
-// const distPath = path.join(DIST_DIR, "index.html"); //LOOK INTO THIS
+const distPath = path.join(DIST_DIR, "index.html"); //LOOK INTO THIS
 
 
 let teamMembers = [];
@@ -19,27 +19,34 @@ const createTeam = () => {
 
 
 const buildTeam = () => {
+  // console.log("build team function goes here");
     // Create the output directory if the dist path doesn't exist
-    // if (!fs.existsSync(DIST_DIR)) {
-    //   fs.mkdirSync(DIST_DIR);
-    // }
-  // fs.writeFile(distPath, generateHTML(teamMembers), "utf-8")
+    if (!fs.existsSync(DIST_DIR)) {
+      fs.mkdirSync(DIST_DIR);
+    }
+  const generateHTML = require('./src/generateHTML')
+  fs.writeFile(distPath, generateHTML(teamMembers), "utf-8", (err) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+
   // fs.writeFile("index.html", generateHTML(teamMembers));
   }
-
 
 
 const appMenu = () => {
   createManager();
 };
 
+
 const createManager = () => {
   askManagerQuestions()
   .then((answers) => {
     const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
     teamMembers.push(manager);
-    console.log(`Welcome ${answers.name}`)
-    console.log(teamMembers);
+    console.log(`Welcome ${answers.name}!`)
+    // console.log(teamMembers);
     createMembers();
   })
   .catch((err) => console.error(err));
@@ -107,7 +114,7 @@ const createEngineer = () => {
   .then((answers) => {
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
     teamMembers.push(engineer);
-    console.log(teamMembers);
+    // console.log(teamMembers);
     createMembers();
   })
   .catch((err) => console.error(err));
@@ -145,7 +152,7 @@ const createIntern = () => {
   .then((answers) => {
     const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
     teamMembers.push(intern);
-    console.log(teamMembers);
+    // console.log(teamMembers);
     createMembers();
   })
   .catch((err) => console.error(err));
@@ -180,4 +187,5 @@ const internQuestions = [
 
 
 appMenu();
+
 
