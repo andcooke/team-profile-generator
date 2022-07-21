@@ -1,6 +1,6 @@
 function generateManager(manager){
     return `
-    <div  class="custom-card  m-2">
+  <div  class="custom-card  m-2">
     <div class="card flex-sm-row" style="width: 18rem;">
       <div class="card-body bg-primary">
         <h2 class="card-title text-light">${manager.name}</h2>
@@ -19,7 +19,7 @@ function generateManager(manager){
 
 function generateIntern(intern){ 
     return `
-    <div  class="custom-card  m-2">
+  <div  class="custom-card  m-2">
     <div class="card flex-sm-row" style="width: 18rem;">
       <div class="card-body bg-primary">
         <h2 class="card-title text-light">${intern.name}</h2>
@@ -37,7 +37,7 @@ function generateIntern(intern){
 
 function generateEngineer(engineer){
     return `
-    <div  class="custom-card  m-2">
+  <div  class="custom-card  m-2">
     <div class="card flex-sm-row" style="width: 18rem;">
       <div class="card-body bg-primary">
         <h2 class="card-title text-light">${engineer.name}</h2>
@@ -61,15 +61,13 @@ function generateHTML(team) {
     const managerArr = team.filter(isManager);
     const managerRes = managerArr.map(generateManager);
     resultArr.push(managerRes); 
-    const engineerArr = team.filter(isEngineer);
+    const engineerArr = team.filter(isEngineer); // maybe join here
     const engineerRes = engineerArr.map(generateEngineer);
     resultArr.push(engineerRes);
-    const internArr = team.filter(isIntern);
+    const internArr = team.filter(isIntern); // maybe join here
     const internRes = internArr.map(generateIntern);
     resultArr.push(internRes); 
-    //filter
     return resultArr.join("\n")
-    //map
 };
 
 function isManager(teamMember) {
