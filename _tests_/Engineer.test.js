@@ -6,11 +6,8 @@ describe('Engineer', () => {
     it("should exist with a name property set to the name argument provided when called with the new keyword", () => {
 
       const name = "Jeff";
-
       const id = "23";
-
       const email = "test@test.com"
-
       const github = "github";
 
       const obj = new Engineer(name, id, email, github);

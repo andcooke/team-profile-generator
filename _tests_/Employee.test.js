@@ -6,11 +6,8 @@ describe('Employee', () => {
     it("should exist with a name property set to the name argument provided when called with the new keyword", () => {
 
       const name = "Jeff";
-
       const id = "23";
-
       const email = "test@test.com"
-
       const obj = new Employee(name, id, email);
 
       expect(obj.name).toEqual(name);

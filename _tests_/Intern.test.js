@@ -7,11 +7,8 @@ describe('Intern', () => {
     it("should exist with a name property set to the name argument provided when called with the new keyword", () => {
 
       const name = "Jeff";
-
       const id = "23";
-
       const email = "test@test.com"
-
       const school = "school";
 
       const obj = new Intern(name, id, email, school);

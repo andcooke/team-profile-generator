@@ -56,12 +56,18 @@ const managerQuestions = [
   {
     type: "input",
     message: "What is your name?",
-    name: "name"
+    name: "name",
+    validate: (answer) => {
+      if (answer) {
+        return true;
+      }
+      return "Please enter your name!";
+    }
   },
   {
     type: "input",
     message: "What is your ID number?",
-    name: "id"
+    name: "id",
   },
   {
     type: "input",

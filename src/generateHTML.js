@@ -53,20 +53,18 @@ function generateEngineer(engineer){
     `
 }
 
-
-
 function generateHTML(team) {
     let resultArr = []
     // console.log("generateHTML function here. here's the team:", team);
     const managerArr = team.filter(isManager);
     const managerRes = managerArr.map(generateManager);
     resultArr.push(managerRes); 
-    const engineerArr = team.filter(isEngineer); // maybe join here
+    const engineerArr = team.filter(isEngineer); 
     const engineerRes = engineerArr.map(generateEngineer);
-    resultArr.push(engineerRes);
-    const internArr = team.filter(isIntern); // maybe join here
+    resultArr.push(engineerRes.join(""));
+    const internArr = team.filter(isIntern); 
     const internRes = internArr.map(generateIntern);
-    resultArr.push(internRes); 
+    resultArr.push(internRes.join("")); 
     return resultArr.join("\n")
 };
 
