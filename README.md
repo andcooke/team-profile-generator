@@ -4,6 +4,8 @@
 
 Please watch the following video for a walkthrough on how to use this app:
 
+https://user-images.githubusercontent.com/105688564/180343408-e52e4217-209c-403a-99d6-7cc54ee86015.mp4
+
 ## Description
 
 This is a command-line function that accepts user input and prints a formatted html page to display the details of a user-made software team.
